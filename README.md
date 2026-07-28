@@ -38,6 +38,32 @@ scripts/                              # 運営用スクリプト（受講者は�
 CLAUDE.md                             # Claude Code への作業ルール
 ```
 
+## クラス構成図
+
+```mermaid
+classDiagram
+    class ExpenseItem {
+        +Category category
+        +int amount
+    }
+
+    class Category {
+        <<enumeration>>
+        TRANSPORT
+        MEAL
+        OTHER
+    }
+
+    class ExpenseService {
+        +int TRANSPORT_CAP$
+        +int reimburse(ExpenseItem item)
+        +int total(List~ExpenseItem~ items)
+    }
+
+    ExpenseItem --> Category : uses
+    ExpenseService ..> ExpenseItem : depends on
+```
+
 ## 進め方
 
 このリポジトリの Issues にタスクが積んであります。Claude Code に「次にやるべきタスクを提案して」と話しかけるところから始めてください。
